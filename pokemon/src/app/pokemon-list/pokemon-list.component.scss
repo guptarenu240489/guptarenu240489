@@ -1,0 +1,23 @@
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    .card {
+        border: solid 1px #c4b7b7;
+        background: aliceblue;
+        padding: 8px;
+        margin: 20px;
+        width: 15%;
+        &:hover {
+            cursor: pointer;
+            box-shadow: 2px 2px 8px 1px #000000;
+        }
+    }
+}
+
+.action-btn {
+    float: right;
+    .btn.btn-primary {
+        width: 80px;
+        margin: 4px;
+    }
+}

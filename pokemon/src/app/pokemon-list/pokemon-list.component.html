@@ -1,0 +1,19 @@
+<div class="pokemon-list">
+    <div *ngFor="let pokemon of pokemonList" class="card">
+        <app-pokemon [name]= "pokemon.name" [url]="pokemon.url"></app-pokemon>
+    </div>
+</div>
+<div class="action-btn">
+    <button
+        type="button"
+        class="btn btn-primary"
+        (click)="getPrevious()"
+        [disabled]="!previous">Previous
+</button>
+    <button
+        type="button"
+        class="btn btn-primary"
+        (click)="getNext()"
+        [disabled]="!next">
+        Next</button>
+</div>
