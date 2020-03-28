@@ -1,0 +1,73 @@
+<form [formGroup]="pokemonForm" class="container" (ngSubmit)="submitForm()">
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="container" formArrayName="pokemonDetails"
+            *ngFor="let details of pokemonControls; let i = index;">
+            <div [formGroupName]="i">
+              <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Name"/>
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" formControlName="description" placeholder="Description"/>
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="number" class="form-control" formControlName="price" placeholder="Price"/>
+                          </div>
+                    </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" formControlName="category" placeholder="Category">
+                          <option value="electronic">Electronic</option>
+                          <option value="cloth">Cloth</option>
+                          <option value="blanket">Blanket</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text" class="form-control" formControlName="imageUrl" placeholder="Image URL"/>
+                          </div>
+                    </div>
+              <div class="col-xs-2">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Phone"/>
+                      </div>
+                </div>
+                <div class="col-xs-2">
+                        <div class="form-group">
+                            <label>Select</label>
+                            <select class="form-control" formControlName="select" placeholder="Select">
+                              <option value="mobile">Mobile</option>
+                              <option value="landline">Landline</option>
+                            </select>
+                          </div>
+                    </div>
+          </div>
+            </div>
+            <hr>
+          </section>
+           <button type="button" class="btn btn-primary" (click)="addPokemon()" [disabled]="count<4 ? false: true">Add Address</button>
+
+          <div class="text-right">
+            <button type="button" class="btn btn-primary" (click)="resetForm()">Reset</button>
+                <input type="submit" class="btn btn-success" value="Submit" [disabled]="!pokemonForm.valid"/>
+            </div>
+        </div>
+
+    </div>
+</form>
