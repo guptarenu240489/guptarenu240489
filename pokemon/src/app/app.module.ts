@@ -13,6 +13,8 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonComponent } from './pokemon-list/pokemon/pokemon.component';
 import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { PokemonProfileComponent } from './pokemon-details/pokemon-profile/pokemon-profile.component';
+import { PokemonEvolutionComponent } from './pokemon-details/pokemon-evolution/pokemon-evolution.component';
+import { PokemonStatisticsComponent } from './pokemon-details/pokemon-statistics/pokemon-statistics.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { PokemonProfileComponent } from './pokemon-details/pokemon-profile/pokem
     PokemonListComponent,
     PokemonComponent,
     PokemonFormComponent,
-    PokemonProfileComponent
+    PokemonProfileComponent,
+    PokemonEvolutionComponent,
+    PokemonStatisticsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,50 @@
+.name {
+    background: green;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    padding: 16px;
+}
+.description {
+    text-align: center;
+    margin: 32px;
+}
+
+.type {
+    color: white;
+    padding: 8px;
+    text-transform: uppercase;
+    margin: 4px;
+}
+.green {
+    background: green;
+}
+.purple {
+    background: purple;
+}
+.red {
+    background: red;
+}
+.blue {
+    background: blue;
+}
+.orange {
+    background: orange;
+}
+.pink {
+    background: pink;
+}
+.violet {
+    background: violet;
+}
+
+.statistics {
+    display: flex;
+    .progress {
+        flex-grow: 1;
+        margin-bottom: 4px;
+    }
+    .stat-name {
+        width: 25%;
+    }
+}

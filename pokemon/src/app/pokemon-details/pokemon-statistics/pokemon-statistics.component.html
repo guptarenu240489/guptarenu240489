@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <div class="row name">
+            {{ pokemonDetails.name | titlecase}}
+        </div>
+        <div class="row description ">
+            <span
+                class="type"
+                *ngFor="let type of pokemonDetails.types"
+                [ngClass]="getBackgroundColor(type.type.name)"> {{ type.type.name }}</span>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <img [src]="pokemonDetails.sprites.front_default" [alt]="pokemonDetails.sprites.front_default">
+            </div>
+            <div class="col-xs-10">
+                <div class="statistics" *ngFor="let stat of pokemonDetails.stats">
+                    <div class="stat-name"> {{ stat.stat.name | titlecase }}</div>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" [style]="getProgressbarWidth(stat.base_stat)" aria-valuemin="0" aria-valuemax="100">{{ stat.base_stat }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

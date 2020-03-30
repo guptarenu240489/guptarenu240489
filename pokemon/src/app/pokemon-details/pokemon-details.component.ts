@@ -22,26 +22,4 @@ export class PokemonDetailsComponent implements OnInit {
         })
     })
   }
-  getBackgroundColor(type) {
-    switch (type) {
-      case 'grass':
-        return 'green';
-      case 'poison':
-        return 'purple';
-      case 'fire':
-        return 'red';
-      case 'flying':
-        return 'orange';
-      case 'normal':
-        return 'pink';
-      case 'water':
-        return 'blue';
-      default:
-        return 'violet';
-    }
-  }
-
-  getProgressbarWidth(width: number) {
-    return `width: ${width}%;`
-  }
 }
