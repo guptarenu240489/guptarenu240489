@@ -9,8 +9,8 @@ import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: PokemonListComponent },
-  { path: 'details', component: PokemonDetailsComponent},
   { path: 'list', component: PokemonListComponent },
+  { path: 'list/:id', component: PokemonDetailsComponent },
   { path: 'add', component: PokemonFormComponent}
 ];
 

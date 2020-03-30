@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -11,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonComponent } from './pokemon-list/pokemon/pokemon.component';
 import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
+import { PokemonProfileComponent } from './pokemon-details/pokemon-profile/pokemon-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
     HeaderComponent,
     PokemonListComponent,
     PokemonComponent,
-    PokemonFormComponent
+    PokemonFormComponent,
+    PokemonProfileComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
