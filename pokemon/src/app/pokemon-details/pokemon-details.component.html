@@ -1,4 +1,5 @@
-<div class="container details" *ngIf="pokemonDetails">
-    <app-pokemon-statistics [pokemonDetails]="pokemonDetails"></app-pokemon-statistics>
-    <app-pokemon-profile [pokemonDetails]="pokemonDetails"></app-pokemon-profile>
+<div class="container details" >
+    <app-pokemon-statistics [pokemonDetails]="pokemonProfile$ | async"></app-pokemon-statistics>
+    <app-pokemon-profile *ngIf="profileAndSpecies" [profile]="profileAndSpecies"></app-pokemon-profile>
+    <app-pokemon-evolution *ngIf="profileWithEvolution" [evolutionDetails]="profileWithEvolution"></app-pokemon-evolution>
 </div>

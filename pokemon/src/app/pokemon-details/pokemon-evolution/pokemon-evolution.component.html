@@ -1,1 +1,21 @@
-<p>pokemon-evolution works!</p>
+
+<div class="profile">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="row header">
+                    Evolution
+                </div>
+                <div class="row">
+                    <!-- <div class="col-xs-6" *ngFor="let key of profileKeys">
+                        <div class="row">
+                            <div class="col-xs-6 header-keys">{{ pokemonProfile[key].key }}:</div>
+                            <div class="col-xs-6">{{ pokemonProfile[key].value }}</div>
+                        </div>
+                    </div> -->
+                    {{ evolutionDetails.details.name | titlecase}} evolves into
+                    {{ evolutionDetails.evolution.chain.evolves_to[0].species.name}}
+                    at level {{ evolutionDetails.evolution.chain.evolves_to[0].evolution_details[0].min_level}}
+                </div>
+            </div>
+        </div>
+    </div>
