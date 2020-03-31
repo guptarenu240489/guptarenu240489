@@ -1,20 +1,27 @@
 
-<div class="profile">
+<div class="evolution">
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="row header">
                     Evolution
                 </div>
                 <div class="row">
-                    <!-- <div class="col-xs-6" *ngFor="let key of profileKeys">
-                        <div class="row">
-                            <div class="col-xs-6 header-keys">{{ pokemonProfile[key].key }}:</div>
-                            <div class="col-xs-6">{{ pokemonProfile[key].value }}</div>
-                        </div>
-                    </div> -->
+                    <div class="col-xs-4">
+                        <img [src]="evolutionDetails?.details?.sprites?.front_default" >
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-4">
+                        <img *ngIf="evolvedImage" [src]="evolvedImage" [alt]="evolvedImage">
+                    </div>
+                </div>
+                <div class="row center">
                     {{ evolutionDetails.details.name | titlecase}} evolves into
                     {{ evolutionDetails.evolution.chain.evolves_to[0].species.name}}
-                    at level {{ evolutionDetails.evolution.chain.evolves_to[0].evolution_details[0].min_level}}
+                    <span class="bold">
+                        at level {{ evolutionDetails.evolution.chain.evolves_to[0].evolution_details[0].min_level}}
+                    </span>
                 </div>
             </div>
         </div>

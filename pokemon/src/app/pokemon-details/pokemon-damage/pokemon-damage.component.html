@@ -1,0 +1,14 @@
+<div class="damage">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <div class="row header">
+                    Damage When Attacked
+                </div>
+                <div class="row">
+                    <div class="col-xs-6" *ngFor="let moves of removeDuplicates(moveList)">
+                        <span class="list" [ngClass]="moves"> {{ moves | titlecase}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

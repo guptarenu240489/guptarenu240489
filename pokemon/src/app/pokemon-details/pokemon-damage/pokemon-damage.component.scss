@@ -1,0 +1,28 @@
+.damage {
+    padding: 8px;
+    .header {
+        background: green;
+        color: white;
+        font-weight: bolder;
+        padding: 16px;
+    }
+
+    .list {
+        border: solid 1px white;
+        color: white;
+        font-weight: bold;
+        padding: 4px;
+        width: 35%;
+        display: block;
+    }
+
+    .physical {
+        background: red;
+    }
+    .status {
+        background: blue;
+    }
+    .special {
+        background: green;
+    }
+}

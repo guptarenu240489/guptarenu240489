@@ -2,4 +2,5 @@
     <app-pokemon-statistics [pokemonDetails]="pokemonProfile$ | async"></app-pokemon-statistics>
     <app-pokemon-profile *ngIf="profileAndSpecies" [profile]="profileAndSpecies"></app-pokemon-profile>
     <app-pokemon-evolution *ngIf="profileWithEvolution" [evolutionDetails]="profileWithEvolution"></app-pokemon-evolution>
+    <app-pokemon-damage [pokemonDetails]="pokemonProfile$"></app-pokemon-damage>
 </div>

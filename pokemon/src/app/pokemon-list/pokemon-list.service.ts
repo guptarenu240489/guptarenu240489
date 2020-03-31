@@ -23,9 +23,8 @@ export class PokemonListService {
     return this.httpClient.get(url);
   }
 
-  addPokemon(pokemon) {
-    this.pokemons.push(pokemon);
-    this.pokemonList.next([...this.pokemons]);
+  getPokemonById(id: number) {
+    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
   }
   getSpecies(id: number) {
     return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);

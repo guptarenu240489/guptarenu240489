@@ -15,6 +15,7 @@ import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { PokemonProfileComponent } from './pokemon-details/pokemon-profile/pokemon-profile.component';
 import { PokemonEvolutionComponent } from './pokemon-details/pokemon-evolution/pokemon-evolution.component';
 import { PokemonStatisticsComponent } from './pokemon-details/pokemon-statistics/pokemon-statistics.component';
+import { PokemonDamageComponent } from './pokemon-details/pokemon-damage/pokemon-damage.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PokemonStatisticsComponent } from './pokemon-details/pokemon-statistics
     PokemonFormComponent,
     PokemonProfileComponent,
     PokemonEvolutionComponent,
-    PokemonStatisticsComponent
+    PokemonStatisticsComponent,
+    PokemonDamageComponent
   ],
   imports: [
     BrowserModule,
