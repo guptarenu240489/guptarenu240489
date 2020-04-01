@@ -42,8 +42,6 @@ export class PokemonFormComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.pokemonForm.value);
-    console.log(this.pokemonForm.valid);
     localStorage.setItem('form',JSON.stringify(this.pokemonForm.value));
   }
   resetForm() {

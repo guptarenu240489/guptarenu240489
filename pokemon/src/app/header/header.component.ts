@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   login() {
     this.userService.login();
     this.isAdmin = this.userService.isAdmin;
+    // const name = 'bulbasaur'
+    // this.router.navigateByUrl(`/list/${name}`);
 
   }
 

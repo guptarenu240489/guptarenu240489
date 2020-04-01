@@ -1,15 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PokemonListService } from '../pokemon-list/pokemon-list.service';
-import { mergeMap, switchMap, tap, takeUntil, withLatestFrom, map } from 'rxjs/operators';
-import { Subject, Observable , combineLatest} from 'rxjs';
+import { switchMap, tap, map } from 'rxjs/operators';
+import { Observable , combineLatest} from 'rxjs';
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
   styleUrls: ['./pokemon-details.component.scss']
 })
-export class PokemonDetailsComponent implements OnInit, OnDestroy {
-  private subscriptionSubject = new Subject();
+export class PokemonDetailsComponent implements OnInit {
   id: number;
   pokemonProfile$: Observable<any>;
   pokemonSpecies$: Observable<any>;
@@ -23,46 +22,41 @@ export class PokemonDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routes.params.subscribe
     ((params: Params) => {
-      this.id  = +params['id'];
-    //   this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
-    //     .subscribe(data => {
-    //       this.pokemonDetails = data;
-    //     })
+      this.id  = params['id'];
+      this.pokemonProfile$ = this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
+      this.pokemonSpecies$ =  this.pokemonProfile$.pipe(
+        switchMap((details: any) => {
+          return this.pokemonService.getPokemonDetails(details.species.url);
+        })
+      );
+      this.pokemonEvolution$ = this.pokemonSpecies$.pipe(
+        switchMap((evolution: any) => {
+          return this.pokemonService.getPokemonDetails(evolution.evolution_chain.url)
+        })
+      );
+
+      this.pokemonProfileWithSpecies$ = combineLatest(this.pokemonProfile$, this.pokemonSpecies$)
+        .pipe(
+          tap(value => console.log(value)),
+          map(([details, species]) => {
+          return {
+            details,
+            species
+          }
+        }));
+      this.pokemonProfileWithSpecies$.subscribe(data => this.profileAndSpecies = data);
+
+      this.pokemonProfileWithEvolution$ = combineLatest(this.pokemonProfile$, this.pokemonEvolution$)
+        .pipe(
+          tap(value => console.log('evolution', value)),
+          map(([details, evolution]) => {
+          return {
+            details,
+            evolution
+          }
+        }));
+      this.pokemonProfileWithEvolution$.subscribe(data => this.profileWithEvolution = data);
     })
-
-    this.pokemonProfile$ = this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
-    this.pokemonSpecies$ =  this.pokemonProfile$.pipe(
-      switchMap((details: any) => {
-        return this.pokemonService.getPokemonDetails(details.species.url);
-      })
-    );
-    this.pokemonEvolution$ = this.pokemonSpecies$.pipe(
-      switchMap((evolution: any) => {
-        return this.pokemonService.getPokemonDetails(evolution.evolution_chain.url)
-      })
-    );
-
-    this.pokemonProfileWithSpecies$ = combineLatest(this.pokemonProfile$, this.pokemonSpecies$)
-      .pipe(
-        tap(value => console.log(value)),
-        map(([details, species]) => {
-        return {
-          details,
-          species
-        }
-      }));
-    this.pokemonProfileWithSpecies$.subscribe(data => this.profileAndSpecies = data);
-
-    this.pokemonProfileWithEvolution$ = combineLatest(this.pokemonProfile$, this.pokemonEvolution$)
-      .pipe(
-        tap(value => console.log('evolution', value)),
-        map(([details, evolution]) => {
-        return {
-          details,
-          evolution
-        }
-      }));
-    this.pokemonProfileWithEvolution$.subscribe(data => this.profileWithEvolution = data);
       // this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
       //   .pipe(
       //     switchMap((details: any) => {
@@ -83,9 +77,5 @@ export class PokemonDetailsComponent implements OnInit, OnDestroy {
       //   .subscribe(result => {
       //     console.log(result);
       //   });
-  }
-
-  ngOnDestroy() {
-    // this.subscriptionSubject.next();
   }
 }

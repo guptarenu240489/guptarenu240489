@@ -16,6 +16,7 @@ import { PokemonProfileComponent } from './pokemon-details/pokemon-profile/pokem
 import { PokemonEvolutionComponent } from './pokemon-details/pokemon-evolution/pokemon-evolution.component';
 import { PokemonStatisticsComponent } from './pokemon-details/pokemon-statistics/pokemon-statistics.component';
 import { PokemonDamageComponent } from './pokemon-details/pokemon-damage/pokemon-damage.component';
+import { PokemonSearchComponent } from './header/pokemon-search/pokemon-search.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PokemonDamageComponent } from './pokemon-details/pokemon-damage/pokemon
     PokemonProfileComponent,
     PokemonEvolutionComponent,
     PokemonStatisticsComponent,
-    PokemonDamageComponent
+    PokemonDamageComponent,
+    PokemonSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -24,12 +24,11 @@ export class PokemonComponent implements OnInit {
       .subscribe((data: any) => {
         this.image = data.sprites.front_default;
         this.id = data.id;
-        // this.pokemonListService.addPokemon(data);
       })
   }
 
   navigate() {
-    this.router.navigate([ this.id], {relativeTo: this.route});
+    this.router.navigate([this.id], {relativeTo: this.route});
   }
 
 }
