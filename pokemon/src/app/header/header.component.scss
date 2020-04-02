@@ -1,3 +1,14 @@
-.navbar-default {
+.navbar-default
+{
     background-color: #131313;
+    .navbar-nav>li>a {
+        cursor: pointer;
+        color: white;
+        &:hover {
+            color: white;
+        }
+    }
+    .navbar-nav>li.active>a {
+        color: black;
+    }
 }
