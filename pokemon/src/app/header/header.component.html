@@ -12,8 +12,8 @@
           <li routerLinkActive="active" *ngIf="isAdmin"><a routerLink="/list">Product List</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a style="cursor: pointer;" (click)="login()">Login</a></li>
-            <li><a style="cursor: pointer;" (click)="logout()">Logout</a></li>
+            <li><a style="cursor: pointer;" (click)="login()" *ngIf="!isAdmin">Login</a></li>
+            <li><a style="cursor: pointer;" (click)="logout()" *ngIf="isAdmin">Logout</a></li>
             <li><app-pokemon-search></app-pokemon-search></li>
         </ul>
       </div>

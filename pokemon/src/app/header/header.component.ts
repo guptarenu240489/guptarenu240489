@@ -11,20 +11,17 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.isAdmin = this.userService.isAdmin;
+    this.isAdmin = this.userService.isLogedIn();
   }
 
   login() {
     this.userService.login();
-    this.isAdmin = this.userService.isAdmin;
-    // const name = 'bulbasaur'
-    // this.router.navigateByUrl(`/list/${name}`);
-
+    this.isAdmin = this.userService.isLogedIn();
   }
 
   logout() {
     this.userService.logout();
-    this.isAdmin = this.userService.isAdmin;
+    this.isAdmin = this.userService.isLogedIn();
 
   }
 }

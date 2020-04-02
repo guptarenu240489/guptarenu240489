@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  public isAdmin = false;
+  public isAdmin = true;
   constructor() { }
 
   login() {
@@ -13,5 +13,8 @@ export class UserService {
 
   logout() {
     this.isAdmin = false;
+  }
+  isLogedIn() {
+    return this.isAdmin;
   }
 }

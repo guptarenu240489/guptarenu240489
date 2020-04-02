@@ -22,7 +22,7 @@ export class PokemonDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.routes.params.subscribe
     ((params: Params) => {
-      this.id  = params['id'];
+      this.id  = params['id'].toLowerCase();
       this.pokemonProfile$ = this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
       this.pokemonSpecies$ =  this.pokemonProfile$.pipe(
         switchMap((details: any) => {
@@ -56,26 +56,6 @@ export class PokemonDetailsComponent implements OnInit {
           }
         }));
       this.pokemonProfileWithEvolution$.subscribe(data => this.profileWithEvolution = data);
-    })
-      // this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
-      //   .pipe(
-      //     switchMap((details: any) => {
-      //       this.pokemonDetails = details;
-      //       //
-      //       //
-      //       return this.pokemonService.getPokemonDetails(details.species.url);
-      //     }),
-      //     switchMap((specimen: any) => {
-      //       return this.pokemonService.getPokemonDetails(specimen.evolution_chain.url);
-
-      //     }),
-      //     tap(specimen => {
-      //       console.log(specimen);
-      //     }),
-      //     takeUntil(this.subscriptionSubject)
-      //   )
-      //   .subscribe(result => {
-      //     console.log(result);
-      //   });
+    });
   }
 }
