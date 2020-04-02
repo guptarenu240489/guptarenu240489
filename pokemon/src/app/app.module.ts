@@ -17,6 +17,7 @@ import { PokemonEvolutionComponent } from './pokemon-details/pokemon-evolution/p
 import { PokemonStatisticsComponent } from './pokemon-details/pokemon-statistics/pokemon-statistics.component';
 import { PokemonDamageComponent } from './pokemon-details/pokemon-damage/pokemon-damage.component';
 import { PokemonSearchComponent } from './header/pokemon-search/pokemon-search.component';
+import { PokemonDetailGuard } from './pokemon-details/pokemon-detail-guard.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { PokemonSearchComponent } from './header/pokemon-search/pokemon-search.c
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PokemonDetailGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

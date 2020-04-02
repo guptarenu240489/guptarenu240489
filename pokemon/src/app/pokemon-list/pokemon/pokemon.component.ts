@@ -28,7 +28,7 @@ export class PokemonComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigate([this.id], {relativeTo: this.route});
+    this.router.navigate(['details', this.id]);
   }
 
 }

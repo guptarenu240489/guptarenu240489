@@ -20,9 +20,8 @@ export class PokemonSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('[Search Form]',this.searchForm.value);
     if(this.searchForm.valid) {
-      this.router.navigate(['list', this.searchForm.value.name]);
+      this.router.navigate(['details', this.searchForm.value.name]);
     }
   }
 }
