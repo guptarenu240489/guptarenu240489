@@ -20,7 +20,6 @@ export class PokemonListComponent implements OnInit {
   private getPokemonList(url?: string) {
     this.pokemonListService.getPokemonList(url)
     .subscribe((list: IPokemonList) => {
-      console.log(list);
       this.next = list.next;
       this.previous = list.previous;
       this.pokemonList = list.results;

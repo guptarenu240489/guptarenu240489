@@ -3,6 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { PokemonListService } from '../pokemon-list/pokemon-list.service';
 import { switchMap, tap, map } from 'rxjs/operators';
 import { Observable , combineLatest} from 'rxjs';
+
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
@@ -17,9 +19,12 @@ export class PokemonDetailsComponent implements OnInit {
   pokemonProfileWithEvolution$: Observable<any>;
   profileAndSpecies;
   profileWithEvolution;
-  constructor(private routes: ActivatedRoute, private pokemonService: PokemonListService) { }
+  constructor(private routes: ActivatedRoute,
+    private pokemonService: PokemonListService,
+    private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.SpinnerService.show();
     this.routes.params.subscribe
     ((params: Params) => {
       this.id  = params['id'].toLowerCase();
@@ -55,7 +60,10 @@ export class PokemonDetailsComponent implements OnInit {
             evolution
           }
         }));
-      this.pokemonProfileWithEvolution$.subscribe(data => this.profileWithEvolution = data);
+      this.pokemonProfileWithEvolution$.subscribe(data => {
+        this.profileWithEvolution = data;
+        this.SpinnerService.hide();
+      });
     });
   }
 }

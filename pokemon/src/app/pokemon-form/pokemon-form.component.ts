@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pokemon-form',
@@ -10,7 +11,7 @@ export class PokemonFormComponent implements OnInit {
   public pokemonForm: FormGroup;
   public pokemonDetails: FormArray;
   public count = 0;
-  constructor(private fb: FormBuilder ) {
+  constructor(private fb: FormBuilder, private spinnerService: NgxSpinnerService ) {
     this.pokemonForm = this.fb.group({
       pokemonDetails: this.fb.array([this.createPokemon()])
     })
@@ -42,7 +43,11 @@ export class PokemonFormComponent implements OnInit {
   }
 
   submitForm() {
+    this.spinnerService.show();
     localStorage.setItem('form',JSON.stringify(this.pokemonForm.value));
+    this.pokemonForm.reset();
+    this.spinnerService.hide();
+    alert('Pokemon Details Saved');
   }
   resetForm() {
     this.pokemonForm.reset();

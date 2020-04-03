@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { NgxSpinnerModule } from "ngx-spinner";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
@@ -40,7 +42,8 @@ import { PokemonDetailGuard } from './pokemon-details/pokemon-detail-guard.servi
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
   providers: [PokemonDetailGuard],
   bootstrap: [AppComponent]
