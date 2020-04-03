@@ -12,7 +12,6 @@ export class PokemonEvolutionComponent implements OnInit {
   constructor(private pokemonService: PokemonListService) { }
 
   ngOnInit(): void {
-    console.log('[evolutionDetails]', this.evolutionDetails);
     this.getEvolvedPokemonImage();
   }
 

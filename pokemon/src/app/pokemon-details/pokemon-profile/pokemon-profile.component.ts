@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { PokemonDetailsComponent } from '../pokemon-details.component';
+import { Component, OnInit, Input } from '@angular/core';
 import { PokemonProfileModel } from './pokemon-profile.model';
-import { PokemonListService } from 'src/app/pokemon-list/pokemon-list.service';
 
 @Component({
   selector: 'app-pokemon-profile',
@@ -17,10 +15,9 @@ export class PokemonProfileComponent implements OnInit{
   catchRate;
   genderRate;
   hatchCounter;
-  constructor(private pokemonService: PokemonListService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log('[Profile component]', this.profile);
     this.getProfile();
   }
   private getEggGroups(eggGroups: Array<any>) {
@@ -42,10 +39,6 @@ export class PokemonProfileComponent implements OnInit{
   }
 
   private getAbilities(abilities) {
-    // const ability = abilities.reduce((prev, current) => {
-    //   return  current.ability.name + ','+ prev;
-    // }, '');
-    // return ability;
     const abiltiesJoined=[]
     abilities.forEach(element => {
       abiltiesJoined.push(element.ability.name)

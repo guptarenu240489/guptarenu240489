@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PokemonListService } from '../pokemon-list.service';
-import { Route, ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
@@ -15,9 +14,7 @@ export class PokemonComponent implements OnInit {
   id: number;
   constructor(
     private httpClient: HttpClient,
-    private pokemonListService: PokemonListService,
-    private router: Router,
-    private route: ActivatedRoute) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.httpClient.get(this.url)

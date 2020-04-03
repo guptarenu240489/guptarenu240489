@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PokemonListService } from '../pokemon-list/pokemon-list.service';
 import { switchMap, tap, map } from 'rxjs/operators';
