@@ -8,15 +8,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pokemon-damage.component.scss']
 })
 export class PokemonDamageComponent implements OnInit {
-  @Input() pokemonDetails: Observable<any>;
+  @Input() pokemonDetails;
   pokemonMoves: Array<any>;
   constructor(private pokemonService: PokemonListService) { }
   moveList = [];
   ngOnInit(): void {
-    this.pokemonDetails.subscribe(data => {
-      this.pokemonMoves = data.moves
+      this.pokemonMoves = this.pokemonDetails.moves;
       this.getMoves();
-    });
   }
   private getMoves() {
     this.pokemonMoves.map((move) => {

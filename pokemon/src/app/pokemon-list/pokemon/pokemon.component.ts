@@ -21,7 +21,7 @@ export class PokemonComponent implements OnInit {
       .subscribe((data: any) => {
         this.image = data.sprites.front_default;
         this.id = data.id;
-      })
+      });
   }
 
   navigate() {

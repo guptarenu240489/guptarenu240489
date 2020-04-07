@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PokemonListService } from '../pokemon-list/pokemon-list.service';
-import { switchMap, tap, map } from 'rxjs/operators';
-import { Observable , combineLatest} from 'rxjs';
+import { switchMap, map, catchError } from 'rxjs/operators';
+import { Observable , combineLatest, Subject, of} from 'rxjs';
 
 import { NgxSpinnerService } from "ngx-spinner";
 @Component({
@@ -17,8 +17,10 @@ export class PokemonDetailsComponent implements OnInit {
   pokemonEvolution$: Observable<any>;
   pokemonProfileWithSpecies$: Observable<any>;
   pokemonProfileWithEvolution$: Observable<any>;
+  loadingError$ = new Subject<boolean>();
   profileAndSpecies;
   profileWithEvolution;
+  pokemonProfile;
   constructor(private routes: ActivatedRoute,
     private pokemonService: PokemonListService,
     private SpinnerService: NgxSpinnerService) { }
@@ -28,7 +30,16 @@ export class PokemonDetailsComponent implements OnInit {
     this.routes.params.subscribe
     ((params: Params) => {
       this.id  = params['id'].toLowerCase();
-      this.pokemonProfile$ = this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`);
+      this.pokemonProfile$ = this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
+        .pipe(catchError(error => {
+          this.loadingError$.next(true);
+          this.SpinnerService.hide();
+            return of(false);
+        }) );
+
+        this.pokemonProfile$.subscribe(data => {
+          this.pokemonProfile = data;
+        })
       this.pokemonSpecies$ =  this.pokemonProfile$.pipe(
         switchMap((details: any) => {
           return this.pokemonService.getPokemonDetails(details.species.url);
@@ -58,9 +69,9 @@ export class PokemonDetailsComponent implements OnInit {
             evolution
           }
         }));
-      this.pokemonProfileWithEvolution$.subscribe(data => {
-        this.profileWithEvolution = data;
-        this.SpinnerService.hide();
+        this.pokemonProfileWithEvolution$.subscribe(data => {
+          this.profileWithEvolution = data;
+          this.SpinnerService.hide();
       });
     });
   }
