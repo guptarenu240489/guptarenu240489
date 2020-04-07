@@ -11,6 +11,7 @@ export class PokemonFormComponent implements OnInit {
   public pokemonForm: FormGroup;
   public pokemonDetails: FormArray;
   public count = 0;
+  isValidFormSubmitted = null;
   constructor(private fb: FormBuilder, private spinnerService: NgxSpinnerService ) {
     this.pokemonForm = this.fb.group({
       pokemonDetails: this.fb.array([this.createPokemon()])
@@ -24,10 +25,10 @@ export class PokemonFormComponent implements OnInit {
     return this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-z0-9]+$/i)]],
       description: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-z0-9]+$/i)]],
-      price: ['',[Validators.required, Validators.minLength(3), Validators.pattern(/^[0-9]*\.[0-9]{2}$/)]],
+      price: ['',[Validators.required, Validators.pattern(/^[0-9]*\.[0-9]{2}$/)]],
       category: ['', Validators.required],
       imageUrl: ['',[Validators.required, Validators.pattern(/^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}/)]],
-      phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
+      phoneNumber: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[0-9]+$/i)]],
       select: ['', Validators.required]
     });
   }
@@ -44,10 +45,18 @@ export class PokemonFormComponent implements OnInit {
 
   submitForm() {
     this.spinnerService.show();
-    localStorage.setItem('form',JSON.stringify(this.pokemonForm.value));
-    this.pokemonForm.reset();
-    this.spinnerService.hide();
-    alert('Pokemon Details Saved');
+    this.isValidFormSubmitted= false;
+    if(this.pokemonForm.invalid) {
+      return;
+    }
+    this.isValidFormSubmitted = true;
+
+    setTimeout(() => {
+      localStorage.setItem('form',JSON.stringify(this.pokemonForm.value));
+      this.pokemonForm.reset();
+      this.spinnerService.hide();
+      alert('Pokemon Details Saved');
+    }, 2000);
   }
   resetForm() {
     this.pokemonForm.reset();
