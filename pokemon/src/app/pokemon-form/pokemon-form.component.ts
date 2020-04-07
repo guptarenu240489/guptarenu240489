@@ -55,7 +55,6 @@ export class PokemonFormComponent implements OnInit {
       localStorage.setItem('form',JSON.stringify(this.pokemonForm.value));
       this.pokemonForm.reset();
       this.spinnerService.hide();
-      alert('Pokemon Details Saved');
     }, 2000);
   }
   resetForm() {

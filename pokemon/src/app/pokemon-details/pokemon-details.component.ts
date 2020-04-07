@@ -42,7 +42,6 @@ export class PokemonDetailsComponent implements OnInit {
 
       this.pokemonProfileWithSpecies$ = combineLatest(this.pokemonProfile$, this.pokemonSpecies$)
         .pipe(
-          tap(value => console.log(value)),
           map(([details, species]) => {
           return {
             details,
@@ -53,7 +52,6 @@ export class PokemonDetailsComponent implements OnInit {
 
       this.pokemonProfileWithEvolution$ = combineLatest(this.pokemonProfile$, this.pokemonEvolution$)
         .pipe(
-          tap(value => console.log('evolution', value)),
           map(([details, evolution]) => {
           return {
             details,
