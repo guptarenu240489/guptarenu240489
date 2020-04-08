@@ -1,7 +1,6 @@
 <div class="pokemon" (click)="navigate()">
-    <ngx-spinner [name] ="name" bdColor="rgba(51, 51, 51, 0.8)" [fullScreen]="false" size="default" type="ball-spin-clockwise">
-        <p class="loading">Loading Pokemons...</p>
-    </ngx-spinner>
     <img [src]="image" [alt]="name">
     <div>{{ name | titlecase }}</div>
+    <ngx-spinner [name] ="name" bdColor="rgba(51, 51, 51, 0.8)" [fullScreen]="false" size="default" type="ball-spin-clockwise">
+    </ngx-spinner>
 </div>
