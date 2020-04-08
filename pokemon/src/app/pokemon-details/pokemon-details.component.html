@@ -8,8 +8,8 @@
     <p style="color: white">Loading Pokemon Details. </p>
 </ngx-spinner>
 <ng-template #loadingError>
-    <div class="error-msg">
-        <div *ngIf="loadingError$ | async"> Error loading pokemon details. Please ensure you have added valid Pokemon. </div>
+    <div class="error-msg" *ngIf="loadingError$ | async">
+        <div> Error loading pokemon details. Please ensure you have added valid Pokemon. </div>
         <img src="https://www.seekpng.com/png/detail/334-3345964_error-icon-download-attention-symbol.png" alt="error">
     </div>
 </ng-template>

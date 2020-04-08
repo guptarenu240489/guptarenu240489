@@ -13,14 +13,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class PokemonDetailsComponent implements OnInit , OnDestroy{
   id: number;
-  pokemonProfile$: Observable<any>;
-  pokemonSpecies$: Observable<any>;
-  pokemonEvolution$: Observable<any>;
-  pokemonProfileWithSpecies$: Observable<any>;
-  pokemonProfileWithEvolution$: Observable<any>;
   loadingError$ = new Subject<boolean>();
-  profileAndSpecies;
-  profileWithEvolution;
   pokemonDetails;
   pokemonEvolution;
   pokemonSpecimen;
@@ -44,7 +37,6 @@ export class PokemonDetailsComponent implements OnInit , OnDestroy{
           switchMap((specimen: any) => {
             this.pokemonSpecimen = specimen;
             return this.pokemonService.getPokemonDetails(_.get(specimen, 'evolution_chain.url'));
-
           }),
           takeUntil(this.subscriptionSubject)
         )
