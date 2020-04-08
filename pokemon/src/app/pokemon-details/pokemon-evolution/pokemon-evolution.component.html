@@ -7,7 +7,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-4">
-                        <img [src]="evolutionDetails?.details?.sprites?.front_default" >
+                        <img [src]="profile?.sprites?.front_default" >
                     </div>
                     <div class="col-xs-4">
                         <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
@@ -17,10 +17,10 @@
                     </div>
                 </div>
                 <div class="row center">
-                    {{ evolutionDetails.details.name | titlecase}} evolves into
-                    {{ evolutionDetails.evolution.chain.evolves_to[0].species.name}}
+                    {{ profile.name | titlecase}} evolves into
+                    {{ evolutionDetails.chain.evolves_to[0].species.name}}
                     <span class="bold">
-                        at level {{ evolutionDetails.evolution.chain.evolves_to[0].evolution_details[0].min_level}}
+                        at level {{ evolutionDetails.chain.evolves_to[0].evolution_details[0].min_level}}
                     </span>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import { PokemonListService } from 'src/app/pokemon-list/pokemon-list.service';
 })
 export class PokemonEvolutionComponent implements OnInit {
   @Input() evolutionDetails;
+  @Input() profile;
   evolvedImage: string;
   constructor(private pokemonService: PokemonListService) { }
 
@@ -16,7 +17,7 @@ export class PokemonEvolutionComponent implements OnInit {
   }
 
   private getEvolvedPokemonId() {
-    const evolvedPokemon = this.evolutionDetails.evolution.chain.evolves_to[0].species.url.split('/');
+    const evolvedPokemon = this.evolutionDetails.chain.evolves_to[0].species.url.split('/');
     const length = evolvedPokemon.length;
     return evolvedPokemon[length - 2];
   }

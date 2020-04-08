@@ -1,8 +1,8 @@
 <div class="container details" >
-    <app-pokemon-statistics *ngIf="pokemonProfile ; else loadingError" [pokemonDetails]="pokemonProfile"></app-pokemon-statistics>
-    <app-pokemon-profile *ngIf="pokemonProfile && profileAndSpecies" [profile]="profileAndSpecies"></app-pokemon-profile>
-    <app-pokemon-evolution *ngIf="pokemonProfile && profileWithEvolution" [evolutionDetails]="profileWithEvolution"></app-pokemon-evolution>
-    <app-pokemon-damage *ngIf="pokemonProfile" [pokemonDetails]="pokemonProfile"></app-pokemon-damage>
+    <app-pokemon-statistics *ngIf="pokemonDetails ; else loadingError" [pokemonDetails]="pokemonDetails"></app-pokemon-statistics>
+    <app-pokemon-profile *ngIf="pokemonDetails && pokemonSpecimen" [profile]="pokemonDetails" [specimen]="pokemonSpecimen"></app-pokemon-profile>
+    <app-pokemon-evolution *ngIf="pokemonDetails && pokemonEvolution" [profile]="pokemonDetails" [evolutionDetails]="pokemonEvolution"></app-pokemon-evolution>
+    <app-pokemon-damage *ngIf="pokemonDetails" [pokemonDetails]="pokemonDetails"></app-pokemon-damage>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
     <p style="color: white">Loading Pokemon Details. </p>
