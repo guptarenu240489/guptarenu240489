@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pokemon',
@@ -14,13 +15,16 @@ export class PokemonComponent implements OnInit {
   id: number;
   constructor(
     private httpClient: HttpClient,
-    private router: Router) { }
+    private router: Router,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.httpClient.get(this.url)
       .subscribe((data: any) => {
         this.image = data.sprites.front_default;
         this.id = data.id;
+        this.spinner.hide();
       });
   }
 
