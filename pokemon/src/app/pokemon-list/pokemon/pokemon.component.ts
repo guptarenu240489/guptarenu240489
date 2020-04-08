@@ -19,12 +19,12 @@ export class PokemonComponent implements OnInit {
     private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.spinner.show();
+    this.spinner.show(this.name);
     this.httpClient.get(this.url)
       .subscribe((data: any) => {
         this.image = data.sprites.front_default;
         this.id = data.id;
-        this.spinner.hide();
+        this.spinner.hide(this.name);
       });
   }
 

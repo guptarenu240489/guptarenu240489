@@ -27,7 +27,7 @@ export class PokemonProfileComponent implements OnInit{
     eggGroups.forEach(element => {
       eggGroup.push(element.name)
     });
-    return eggGroup.join(',');
+    return eggGroup.join(', ');
   }
   getProfile() {
     this.pokemonProfile = new PokemonProfileModel(
@@ -47,6 +47,6 @@ export class PokemonProfileComponent implements OnInit{
     abilities.forEach(element => {
       abiltiesJoined.push(element.ability.name)
     });
-    return abiltiesJoined.join(',');
+    return abiltiesJoined.join(', ');
   }
 }
