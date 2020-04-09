@@ -193,7 +193,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -273,7 +273,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:13</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -294,7 +294,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:14</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -330,8 +330,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:32</a></div>
                 </td>
             </tr>
 
@@ -369,8 +369,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:22</a></div>
                 </td>
             </tr>
 
@@ -412,7 +412,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -439,7 +439,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pokemon-list/pokemon/pokemon.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -456,6 +456,7 @@
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
+import { IPokemon } from &#x27;./pokemon.interface&#x27;;
 
 @Component({
   selector: &#x27;app-pokemon&#x27;,
@@ -475,14 +476,14 @@ export class PokemonComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show(this.name);
     this.httpClient.get(this.url)
-      .subscribe((data: any) &#x3D;&gt; {
+      .subscribe((data: IPokemon) &#x3D;&gt; {
         this.image &#x3D; data.sprites.front_default;
         this.id &#x3D; data.id;
         this.spinner.hide(this.name);
       });
   }
 
-  navigate() {
+  navigate() : void {
     this.router.navigate([&#x27;details&#x27;, this.id]);
   }
 

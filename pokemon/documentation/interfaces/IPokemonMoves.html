@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>IPokemonList</li>
+  <li>IPokemonMoves</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/pokemon-list/pokemon-list.interface.ts</code>
+            <code>src/app/pokemon-list/pokemon/pokemon.interface.ts</code>
         </p>
 
 
@@ -79,16 +79,10 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#count">count</a>
+                                        <a href="#move">move</a>
                                 </li>
                                 <li>
-                                        <a href="#next">next</a>
-                                </li>
-                                <li>
-                                        <a href="#previous">previous</a>
-                                </li>
-                                <li>
-                                        <a href="#results">results</a>
+                                        <a href="#version_group_details">version_group_details</a>
                                 </li>
                             </ul>
                         </td>
@@ -105,13 +99,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="count"></a>
-                                        <span class="name"><b>count</b><a href="#count"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="move"></a>
+                                        <span class="name"><b>move</b><a href="#move"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>count:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                        <code>move:     <code>literal type</code>
 </code>
                                     </td>
                                 </tr>
@@ -119,7 +113,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            <i>Type : </i>    <code>literal type</code>
 
                                         </td>
                                     </tr>
@@ -134,13 +128,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="next"></a>
-                                        <span class="name"><b>next</b><a href="#next"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="version_group_details"></a>
+                                        <span class="name"><b>version_group_details</b><a href="#version_group_details"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>next:     <code>string | null</code>
+                                        <code>version_group_details:     <code>any[]</code>
 </code>
                                     </td>
                                 </tr>
@@ -148,65 +142,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>string | null</code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="previous"></a>
-                                        <span class="name"><b>previous</b><a href="#previous"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>previous:     <code>string | null</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>string | null</code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="results"></a>
-                                        <span class="name"><b>results</b><a href="#results"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>results:     <code>IPokemonListResult[]</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>IPokemonListResult[]</code>
+                                            <i>Type : </i>    <code>any[]</code>
 
                                         </td>
                                     </tr>
@@ -222,16 +158,53 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface IPokemonList {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: IPokemonListResult[];
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IPokemonListResult } from &#x27;../pokemon-list.interface&#x27;;
+
+export interface IPokemon {
+    abilities: any[];
+    base_experience: number;
+    forms:any[];
+    game_indices: any[];
+    height: number;
+    id: number;
+    is_default: boolean;
+    location_area_encounters: string;
+    moves: any[];
+    name: string;
+    order:number;
+    species: IPokemonListResult;
+    sprites: IPokemonSprites;
+    stats: IPokemonStats[];
+    types: any[];
+    weight: number;
 }
 
-export interface IPokemonListResult {
-    name: string;
-    url: string;
+export interface IPokemonSprites {
+    back_default: string;
+    back_female: string;
+    back_shiny: string;
+    back_shiny_female: string;
+    front_default: string;
+    front_female: string;
+    front_shiny: string;
+    front_shiny_female: string;
+}
+
+export interface IPokemonStats{
+    base_stat: number;
+    effort: number;
+    stat: {
+        name: string;
+        url: string;
+    }
+}
+
+export interface IPokemonMoves {
+    move: {
+        name: string;
+        url: string;
+    },
+    version_group_details: any[]
 }</code></pre>
     </div>
 </div>
@@ -259,7 +232,7 @@ export interface IPokemonListResult {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'IPokemonList.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'IPokemonMoves.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

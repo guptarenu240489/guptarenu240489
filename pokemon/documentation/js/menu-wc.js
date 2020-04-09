@@ -172,10 +172,31 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
+                                <a href="interfaces/IPokemon.html" data-type="entity-link">IPokemon</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IPokemonEvoltionDetails.html" data-type="entity-link">IPokemonEvoltionDetails</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IPokemonEvolutionChain.html" data-type="entity-link">IPokemonEvolutionChain</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/IPokemonList.html" data-type="entity-link">IPokemonList</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/IPokemonListResult.html" data-type="entity-link">IPokemonListResult</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IPokemonMoves.html" data-type="entity-link">IPokemonMoves</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IPokemonSpecies.html" data-type="entity-link">IPokemonSpecies</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IPokemonSprites.html" data-type="entity-link">IPokemonSprites</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IPokemonStats.html" data-type="entity-link">IPokemonStats</a>
                             </li>
                         </ul>
                     </li>

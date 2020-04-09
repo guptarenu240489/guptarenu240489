@@ -194,7 +194,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -242,9 +242,15 @@
                         <b>pokemonDetails</b>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IPokemon.html" target="_self" >IPokemon</a></code>
+
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:12</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -282,8 +288,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:20</a></div>
                 </td>
             </tr>
 
@@ -321,8 +327,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:16</a></div>
                 </td>
             </tr>
 
@@ -360,8 +366,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:29</a></div>
                 </td>
             </tr>
 
@@ -435,7 +441,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -456,13 +462,13 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>Array&lt;any&gt;</code>
+                            <i>Type : </i>    <code>IPokemonMoves[]</code>
 
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pokemon-details/pokemon-damage/pokemon-damage.component.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -478,6 +484,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
 import { PokemonListService } from &#x27;src/app/pokemon-list/pokemon-list.service&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
+import { IPokemon, IPokemonMoves } from &#x27;src/app/pokemon-list/pokemon/pokemon.interface&#x27;;
 
 @Component({
   selector: &#x27;app-pokemon-damage&#x27;,
@@ -485,16 +492,16 @@ import { Observable } from &#x27;rxjs&#x27;;
   styleUrls: [&#x27;./pokemon-damage.component.scss&#x27;]
 })
 export class PokemonDamageComponent implements OnInit {
-  @Input() pokemonDetails;
-  pokemonMoves: Array&lt;any&gt;;
+  @Input() pokemonDetails: IPokemon;
+  pokemonMoves: IPokemonMoves[];
   constructor(private pokemonService: PokemonListService) { }
   moveList &#x3D; [];
   ngOnInit(): void {
       this.pokemonMoves &#x3D; this.pokemonDetails.moves;
       this.getMoves();
   }
-  private getMoves() {
-    this.pokemonMoves.map((move) &#x3D;&gt; {
+  private getMoves(): void {
+    this.pokemonMoves.map((move: IPokemonMoves) &#x3D;&gt; {
       this.pokemonService.getPokemonDetails(move.move.url)
         .subscribe((moveData: any) &#x3D;&gt; {
           this.moveList.push(moveData.damage_class.name);

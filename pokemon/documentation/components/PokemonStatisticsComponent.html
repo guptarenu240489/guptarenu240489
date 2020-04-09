@@ -176,7 +176,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -194,9 +194,15 @@
                         <b>pokemonDetails</b>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IPokemon.html" target="_self" >IPokemon</a></code>
+
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:10</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -225,15 +231,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getBackgroundColor(type)</code>
+<code>getBackgroundColor(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:15</a></div>
                 </td>
             </tr>
 
@@ -247,12 +253,16 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -266,7 +276,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>&quot;green&quot; | &quot;purple&quot; | &quot;red&quot; | &quot;orange&quot; | &quot;pink&quot; | &quot;blue&quot; | &quot;violet&quot;</code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </div>
                     <div class="io-description">
@@ -298,8 +308,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:34</a></div>
                 </td>
             </tr>
 
@@ -368,8 +378,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/pokemon-details/pokemon-statistics/pokemon-statistics.component.ts:13</a></div>
                 </td>
             </tr>
 
@@ -392,6 +402,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
+import { IPokemon } from &#x27;src/app/pokemon-list/pokemon/pokemon.interface&#x27;;
 
 @Component({
   selector: &#x27;app-pokemon-statistics&#x27;,
@@ -399,12 +410,12 @@
   styleUrls: [&#x27;./pokemon-statistics.component.scss&#x27;]
 })
 export class PokemonStatisticsComponent implements OnInit {
-  @Input () pokemonDetails;
+  @Input () pokemonDetails: IPokemon;
   constructor() { }
 
   ngOnInit(): void {
   }
-  getBackgroundColor(type) {
+  getBackgroundColor(type: string): string {
     switch (type) {
       case &#x27;grass&#x27;:
         return &#x27;green&#x27;;
@@ -423,7 +434,7 @@ export class PokemonStatisticsComponent implements OnInit {
     }
   }
 
-  getProgressbarWidth(width: number) {
+  getProgressbarWidth(width: number): string {
     return &#x60;width: ${width}%;&#x60;
   }
 }
