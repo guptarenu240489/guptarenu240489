@@ -17,10 +17,10 @@
                     </div>
                 </div>
                 <div class="row center">
-                    {{ profile.name | titlecase}} evolves into
-                    {{ evolutionDetails.chain.evolves_to[0].species.name}}
+                    {{ profile?.name | titlecase}} evolves into
+                    {{ evolutionDetails?.chain?.evolves_to[0]?.species.name}}
                     <span class="bold">
-                        at level {{ evolutionDetails.chain.evolves_to[0].evolution_details[0].min_level}}
+                        at level {{ evolutionDetails?.chain?.evolves_to[0]?.evolution_details[0]?.min_level}}
                     </span>
                 </div>
             </div>

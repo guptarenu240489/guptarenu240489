@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PokemonListService } from '../pokemon-list/pokemon-list.service';
 import { switchMap, takeUntil } from 'rxjs/operators';
-import { Observable , Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import * as _ from 'lodash';
 
 import { NgxSpinnerService } from "ngx-spinner";
@@ -46,9 +46,12 @@ export class PokemonDetailsComponent implements OnInit , OnDestroy{
           this.pokemonEvolution = result;
           this.SpinnerService.hide();
         },
-        error => {
-          this.loadingError$.next(true);
+        (error) => {
+          this.pokemonDetails = null;
+          this.pokemonEvolution = null;
+          this.pokemonSpecimen = null;
           this.SpinnerService.hide();
+          this.loadingError$.next(true);
         });
     });
   }
