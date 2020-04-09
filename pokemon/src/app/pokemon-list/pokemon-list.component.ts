@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonListService } from './pokemon-list.service';
-import { IPokemonList, IPokemonListResult } from './pokemon-list';
+import { IPokemonList, IPokemonListResult } from './pokemon-list.interface';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -17,7 +17,7 @@ export class PokemonListComponent implements OnInit {
     this.getPokemonList();
   }
 
-  private getPokemonList(url?: string) {
+  private getPokemonList(url?: string) : void {
     this.pokemonListService.getPokemonList(url)
     .subscribe((list: IPokemonList) => {
       this.next = list.next;
@@ -26,11 +26,11 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
-  getNext() {
+  getNext() : void {
     this.getPokemonList(this.next);
   }
 
-  getPrevious() {
+  getPrevious() : void {
     this.getPokemonList(this.previous);
   }
 }

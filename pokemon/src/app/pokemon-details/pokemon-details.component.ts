@@ -6,6 +6,8 @@ import { Observable , Subject } from 'rxjs';
 import * as _ from 'lodash';
 
 import { NgxSpinnerService } from "ngx-spinner";
+import { IPokemon } from '../pokemon-list/pokemon/pokemon.interface';
+import { IPokemonSpecies, IPokemonEvolutionChain } from './pokemon-details-interface';
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
@@ -30,17 +32,17 @@ export class PokemonDetailsComponent implements OnInit , OnDestroy{
       this.id  = params['id'].toLowerCase();
       this.pokemonService.getPokemonDetails(`https://pokeapi.co/api/v2/pokemon/${this.id}`)
         .pipe(
-          switchMap((details: any) => {
+          switchMap((details: IPokemon) => {
             this.pokemonDetails = details;
             return this.pokemonService.getPokemonDetails(_.get(details, 'species.url'));
           }),
-          switchMap((specimen: any) => {
+          switchMap((specimen: IPokemonSpecies) => {
             this.pokemonSpecimen = specimen;
             return this.pokemonService.getPokemonDetails(_.get(specimen, 'evolution_chain.url'));
           }),
           takeUntil(this.subscriptionSubject)
         )
-        .subscribe(result => {
+        .subscribe((result: IPokemonEvolutionChain) => {
           this.pokemonEvolution = result;
           this.SpinnerService.hide();
         },
