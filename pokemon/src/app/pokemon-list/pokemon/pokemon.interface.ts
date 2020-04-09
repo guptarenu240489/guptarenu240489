@@ -38,3 +38,11 @@ export interface IPokemonStats{
         url: string;
     }
 }
+
+export interface IPokemonMoves {
+    move: {
+        name: string;
+        url: string;
+    },
+    version_group_details: any[]
+}

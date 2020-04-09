@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonProfileModel } from './pokemon-profile.model';
+import { IPokemon } from 'src/app/pokemon-list/pokemon/pokemon.interface';
+import { IPokemonSpecies } from '../pokemon-details-interface';
 
 @Component({
   selector: 'app-pokemon-profile',
@@ -7,21 +9,16 @@ import { PokemonProfileModel } from './pokemon-profile.model';
   styleUrls: ['./pokemon-profile.component.scss']
 })
 export class PokemonProfileComponent implements OnInit{
-  @Input() profile;
-  @Input() specimen;
+  @Input() profile:IPokemon;
+  @Input() specimen: IPokemonSpecies;
   public pokemonProfile: PokemonProfileModel
-  eggGroup;
-  abilities;
-  profileKeys;
-  catchRate;
-  genderRate;
-  hatchCounter;
+  profileKeys: string[];
   constructor() { }
 
   ngOnInit(): void {
     this.getProfile();
   }
-  private getEggGroups(eggGroups: Array<any>) {
+  private getEggGroups(eggGroups: Array<any>) : string{
 
     const eggGroup=[]
     eggGroups.forEach(element => {
@@ -29,7 +26,7 @@ export class PokemonProfileComponent implements OnInit{
     });
     return eggGroup.join(', ');
   }
-  getProfile() {
+  getProfile(): void {
     this.pokemonProfile = new PokemonProfileModel(
       this.profile.height,
       this.profile.weight,
@@ -42,7 +39,7 @@ export class PokemonProfileComponent implements OnInit{
       this.profileKeys = Object.keys(this.pokemonProfile);
   }
 
-  private getAbilities(abilities) {
+  private getAbilities(abilities) : string{
     const abiltiesJoined=[]
     abilities.forEach(element => {
       abiltiesJoined.push(element.ability.name)

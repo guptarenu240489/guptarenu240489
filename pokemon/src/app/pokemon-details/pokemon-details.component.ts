@@ -16,9 +16,9 @@ import { IPokemonSpecies, IPokemonEvolutionChain } from './pokemon-details-inter
 export class PokemonDetailsComponent implements OnInit , OnDestroy{
   id: number;
   loadingError$ = new Subject<boolean>();
-  pokemonDetails;
-  pokemonEvolution;
-  pokemonSpecimen;
+  pokemonDetails: IPokemon;
+  pokemonEvolution: IPokemonEvolutionChain;
+  pokemonSpecimen: IPokemonSpecies;
 
   private subscriptionSubject = new Subject();
   constructor(private routes: ActivatedRoute,

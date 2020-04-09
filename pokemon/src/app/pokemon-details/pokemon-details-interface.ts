@@ -16,7 +16,7 @@ export interface IPokemonSpecies {
 export interface IPokemonEvolutionChain {
     chain : {
         evolves_to: [
-            {
+            {   evolution_details:  IPokemonEvoltionDetails[];
                 evolves_to: [
                     {
                         evolution_details: IPokemonEvoltionDetails[]

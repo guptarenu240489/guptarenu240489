@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IPokemon } from 'src/app/pokemon-list/pokemon/pokemon.interface';
 
 @Component({
   selector: 'app-pokemon-statistics',
@@ -6,12 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pokemon-statistics.component.scss']
 })
 export class PokemonStatisticsComponent implements OnInit {
-  @Input () pokemonDetails;
+  @Input () pokemonDetails: IPokemon;
   constructor() { }
 
   ngOnInit(): void {
   }
-  getBackgroundColor(type) {
+  getBackgroundColor(type: string): string {
     switch (type) {
       case 'grass':
         return 'green';
@@ -30,7 +31,7 @@ export class PokemonStatisticsComponent implements OnInit {
     }
   }
 
-  getProgressbarWidth(width: number) {
+  getProgressbarWidth(width: number): string {
     return `width: ${width}%;`
   }
 }
